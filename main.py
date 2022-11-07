@@ -4,10 +4,7 @@ import numpy as np
 on_list = []
 in_preservica = []
 
-# 'messages.csv' isn't definitive list of what's in Preservica, it's a record
-# of what's been ingested within a rolling window, even if the csv downloaded
-# is unfiltered, the oldest recorded ingest is May 2021 (OCt 2022)
-
+# Function to get the list of references that need checking from the text file and return them as a list
 def get_checklist():
     with open('checklist.txt', 'r') as checklist:
         refs = checklist.readlines()
@@ -15,7 +12,7 @@ def get_checklist():
         on_list.append(refs)
         return refs
 
-
+# Function that checks if reference number is present on the spreadsheet
 def check_ingest_csv(ref_no):
     with open('messages.csv', 'r') as ingest_csv:
         reader = csv.reader(ingest_csv)
@@ -26,6 +23,7 @@ def check_ingest_csv(ref_no):
                 if not entity_title in in_preservica:
                     in_preservica.append(entity_title)
 
+# Main function that returns list of missing reference numbers 
 def main():
     for ref_no in get_checklist():
         check_ingest_csv(ref_no)
