@@ -23,7 +23,7 @@ def check_ingest_csv(ref_no):
                 if not entity_title in in_preservica:
                     in_preservica.append(entity_title)
 
-# Main function that returns list of missing reference numbers 
+# Main function that prints list of missing reference numbers 
 def main():
     for ref_no in get_checklist():
         check_ingest_csv(ref_no)
