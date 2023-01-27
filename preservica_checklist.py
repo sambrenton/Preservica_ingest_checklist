@@ -5,7 +5,7 @@ on_list = []
 in_preservica = []
 
 # Function to get the list of references that need checking from the text file and return them as a list
-def get_checklist():
+def get_checklist() -> list:
     with open('checklist.txt', 'r') as checklist:
         refs = checklist.readlines()
         refs = [ref.strip() for ref in refs]
